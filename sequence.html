@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script rel="stylesheet" type="text/css" src="bootstrap-3.3.7-dist/css/bootstrap.min.css"></script>
+    <style>
+        #content {
+            color: #000002;
+            font-size: 40px;
+            background-color: white;
+            text-align: center;
+        }
+
+        h1 {
+            color: #000002;
+            font-size: 20px;
+            background-color: white;
+        }
+
+        #one {
+            height: 100px;
+            width:100px;
+            text-align: center;
+            align-content: center;
+
+        }
+
+        #two {
+            height: 100px;
+            width: 100px;
+            text-align: center;
+            align-content: center;
+
+        }
+
+        #three {
+            height: 100px;
+            width: 100px;
+            text-align: center;
+            align-content: center;
+
+        }
+
+        #four {
+            height: 100px;
+            width: 100px;
+            text-align: center;
+            align-content: center;
+
+        }
+
+        .dark1 {
+            background-color: #10b958;
+        }
+
+        .light1 {
+            background-color: #13FF75;
+        }
+
+        .dark2 {
+            background-color: #c61611;
+        }
+
+        .light2 {
+            background-color: #ff1c15;
+        }
+
+
+        .dark3 {
+            background-color: #dddf1a;
+        }
+
+        .light3 {
+            background-color: #fdff1d;
+        }
+
+        .dark4 {
+            background-color: #5ac5c6;
+        }
+
+        .light4 {
+            background-color: #73feff;
+        }
+
+        .bt {
+            height: 30px;
+            width: 40px;
+            text-align: center;
+            align-content: center;
+            background-color: transparent;
+        }
+
+
+
+        .img {
+            height: 12px;
+            width: 12px;
+            text-align: center;
+            align-content: center;
+
+        }
+
+        #footer{
+            margin:auto;
+            text-align:center;
+        }
+
+
+    </style>
+
+    <!-- below are my stylesheets -->
+
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="styleSheet.css">
+
+</head>
+
+
+
+
+<body>
+
+
+    <!-- HTML content-->
+    <div class="container-fluid" id="content">
+
+        <div id="parent" class="row text-center">
+            <h1 class="text-primary text-center">Simon</h1>
+
+            <h1 id="input" class="text-primary text-center"></h1>
+
+            <div id = "bt">
+
+
+            <div class="row text-center">
+                <button id="one" class="dark1"></button>
+                <button id="two" class="dark2"></button>
+            </div>
+
+            <div class="row text-center">
+                <div>count</div>
+                <form id="count">  </form>
+                <button id="start" class="bt">start</button>
+                <button id="strict" class="bt">strict</button>
+            </div>
+
+            <div class="row text-center">
+                <button id="off" class="bt">off</button>
+                <button id="on" class="bt">on</button>
+            </div>
+
+            <div class="row text-center">
+                <button id="three" class="dark3"></button>
+                <button id="four" class="dark4"></button>
+            </div>
+            </div>
+
+        </div>
+    </div>
+
+    <audio id="audio1">
+        <source src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="audio2">
+        <source src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="audio3">
+        <source src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="audio4">
+        <source src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3" type="audio/mpeg">
+    </audio>
+
+
+    <hr class="hr">
+
+    <p class="footer text-center" id="footer">Coded by <a href=# target="_blank">Mary Shen</a></p>
+
+
+   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+
+
+    <script>
+
+    var random = [];
+    var litID = [];
+    var lit;
+    var clicked = [];
+    var i;
+    var j=0;
+    var count = 1;
+    var on;
+    var off;
+    var strict;
+    var x;
+
+
+    function change1() {
+
+        //set interval length
+        if (count <= 10) {
+            off = 400;
+            on = 800;
+
+        }
+
+        else {
+            off = 250;
+            on = 500;
+        }
+
+               x = setInterval(function () {
+
+                if (random[j] == 1) {
+
+                    lit = 'light1';
+                    $('#one').addClass(lit);
+                    $('#audio1')[0].play();
+                    litID.push(1);
+
+
+                    setTimeout(function () {
+
+                        $('#one').removeClass(lit);
+
+                    }, off);
+
+                }
+
+                else if (random[j] == 2) {
+
+                    lit = 'light2';
+                    $('#two').addClass(lit);
+                    $('#audio2')[0].play();
+                    litID.push(2);
+
+
+                    setTimeout(function () {
+
+                        $('#two').removeClass(lit);
+
+                    }, off);
+
+                }
+
+                else if (random[j] == 3) {
+
+                    lit = 'light3';
+                    $('#three').addClass(lit);
+                    $('#audio3')[0].play();
+                    litID.push(3);
+
+
+                    setTimeout(function () {
+
+                        $('#three').removeClass(lit);
+
+                    }, off);
+
+                }
+
+                else {
+
+                    lit = 'light4';
+                    $('#four').addClass(lit);
+                    $('#audio4')[0].play();
+                    litID.push(4);
+
+
+                    setTimeout(function () {
+
+                        $('#four').removeClass(lit);
+
+                    }, off);
+                }
+
+                 j++;
+
+                   if (j>=count) {
+                       clearInterval(x);
+                   }
+
+            }, on);
+
+    }
+
+
+    function checking() {
+
+        if (litID.length == clicked.length) {
+
+                if (litID.join() == clicked.join()) {
+
+                        if (count == 20) {
+
+                            setTimeout(function () {
+                                alert("You win!");
+                                location.reload();
+                            }, 1000);
+                        }
+
+                        else {
+                            setTimeout(function () {
+                                $('#count').text(count + 1);
+                                count++;
+                                litID = [];
+                                clicked = [];
+                                j = 0;
+                                change1();
+
+                            }, 1000);
+                        }
+                }
+
+                else {
+                    if (strict == 1) {
+
+                        location.reload();
+
+                    }
+
+                    else {
+                        setTimeout(function () {
+                            $('#count').text('!!');
+
+                            litID = [];
+                            clicked = [];
+                            j = 0;
+                            change1();
+                        }, 1000);
+                    }
+                }
+    }
+  }
+
+
+    //to switch on
+    $('#on').on('click', function () {
+        $('#count').text('--');
+
+        for (i=0; i<20; i++) {
+        random[i] = Math.ceil((Math.random() * 4));
+        }
+
+        $('#strict').on('click', function () {
+            strict=1;
+        });
+
+        //to start the game
+        $('#start').on('click', function () {
+
+            $('#count').text(count);
+
+            change1();
+
+        });
+
+        //user to play
+        $('#one').on('click', function () {
+
+            $('#one').addClass('light1');
+            $('#audio1')[0].play();
+
+            clicked.push(1);
+
+            setTimeout(function () {
+                $('#one').removeClass('light1');
+
+            }, 250);
+
+            checking();
+
+        });
+
+        $('#two').on('click', function () {
+
+            $('#two').addClass('light2');
+            $('#audio2')[0].play();
+
+            clicked.push(2);
+
+            setTimeout(function () {
+                $('#two').removeClass('light2');
+
+            }, 250);
+
+            checking();
+        });
+
+        $('#three').on('click', function () {
+
+            $('#three').addClass('light3');
+            $('#audio3')[0].play();
+
+            clicked.push(3);
+
+            setTimeout(function () {
+                $('#three').removeClass('light3');
+
+            }, 250);
+
+            checking();
+        });
+
+        $('#four').on('click', function () {
+
+            $('#four').addClass('light4');
+            $('#audio4')[0].play();
+
+            clicked.push(4);
+
+            setTimeout(function () {
+                $('#four').removeClass('light4');
+
+            }, 250);
+
+            checking();
+        });
+
+    });
+
+    //to switch off
+    $('#off').on('click', function () {
+        location.reload();
+    });
+
+
+    </script>
+
+
+
+
+</body>
+</html>
